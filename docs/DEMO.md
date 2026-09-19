@@ -36,7 +36,7 @@ Sur le serveur Docker :
 
 ```bash
 cd /opt
-git clone https://github.com/ItechLabFr/proxpanel.git proxpanel-demo
+git clone https://github.com/Mounik/proxpanelPi.git proxpanel-demo
 cd /opt/proxpanel-demo
 docker compose -f docker-compose.demo.yml up -d --build
 ```

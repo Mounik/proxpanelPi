@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://proxpanel.fr">Website</a> ·
   <a href="README.fr.md">Français</a> ·
-  <a href="https://hub.docker.com/r/itechlab/proxpanel">Docker Hub</a> ·
+  <a href="https://hub.docker.com/r/mounik/proxpanel">Docker Hub</a> ·
   <a href="ROADMAP.md">Roadmap</a> ·
   <a href="HISTORY.md">Version history</a>
 </p>
@@ -64,7 +64,7 @@ docker run -d \
   -p 8080:8080 \
   -v proxpanel_data:/app/data \
   -v proxpanel_runtime:/opt/proxpanel-runtime \
-  itechlab/proxpanel:beta
+mounik/proxpanel:beta
 ```
 
 Open:
@@ -79,7 +79,7 @@ At first launch, ProxPanel asks you to create the first administrator account an
 
 ```bash
 mkdir proxpanel && cd proxpanel
-curl -O https://raw.githubusercontent.com/ItechLabFr/proxpanel/main/docker-compose.yml
+curl -O https://raw.githubusercontent.com/Mounik/proxpanelPi/main/docker-compose.yml
 docker compose up -d
 ```
 
@@ -181,13 +181,13 @@ Tested on **Raspberry Pi 5** (Raspberry Pi OS server, 64-bit) with the published
 Verify the currently published image supports both architectures:
 
 ```bash
-docker buildx imagetools inspect itechlab/proxpanel:beta
+docker buildx imagetools inspect mounik/proxpanel:beta
 ```
 
 The provided publishing script targets `linux/amd64` and `linux/arm64`:
 
 ```bash
-DOCKERHUB_IMAGE=itechlab/proxpanel ./docker-publish.sh
+DOCKERHUB_IMAGE=mounik/proxpanel ./docker-publish.sh
 ```
 
 ## Security
@@ -214,7 +214,7 @@ The public history of the 1.7 branch is available in [`HISTORY.md`](HISTORY.md).
 
 Historical notes are available from **1.7.0-beta.1** onward. **v1.7.0-beta.14** is the first reproducible GitHub Release. The latest published prerelease is **v1.7.2-beta.5**, with full ZIP, OTA ZIP, `release.json` and SHA-256 checksums.
 
-Docker images remain distributed through [Docker Hub](https://hub.docker.com/r/itechlab/proxpanel), while `updates.proxpanel.fr` remains responsible for OTA channels, rollout and revocation.
+Docker images remain distributed through [Docker Hub](https://hub.docker.com/r/mounik/proxpanel), while `updates.proxpanel.fr` remains responsible for OTA channels, rollout and revocation.
 
 ## 1.7.2 roadmap
 

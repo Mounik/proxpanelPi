@@ -5,7 +5,7 @@ LABEL org.opencontainers.image.title="ProxPanel" \
       org.opencontainers.image.description="Self-hosted Proxmox VE management panel" \
       org.opencontainers.image.version="${VERSION}" \
       org.opencontainers.image.url="https://proxpanel.fr" \
-      org.opencontainers.image.source="https://github.com/ItechLabFr/proxpanel" \
+      org.opencontainers.image.source="https://github.com/Mounik/proxpanelPi" \
       org.opencontainers.image.licenses="MIT"
 
 # Security hardening for the runtime image:
