@@ -2,11 +2,11 @@ FROM node:22-alpine3.24
 
 ARG VERSION=1.7.2-beta.3
 LABEL org.opencontainers.image.title="ProxPanel" \
-      org.opencontainers.image.description="Self-hosted Proxmox VE management panel" \
-      org.opencontainers.image.version="${VERSION}" \
-      org.opencontainers.image.url="https://proxpanel.fr" \
-      org.opencontainers.image.source="https://github.com/ItechLabFr/proxpanel" \
-      org.opencontainers.image.licenses="MIT"
+    org.opencontainers.image.description="Self-hosted Proxmox VE management panel" \
+    org.opencontainers.image.version="${VERSION}" \
+    org.opencontainers.image.url="https://proxpanel.fr" \
+    org.opencontainers.image.source="https://github.com/ItechLabFr/proxpanel" \
+    org.opencontainers.image.licenses="MIT"
 
 # Security hardening for the runtime image:
 # - refresh Alpine packages so security fixes from the stable repository are applied
@@ -17,13 +17,13 @@ LABEL org.opencontainers.image.title="ProxPanel" \
 RUN apk upgrade --no-cache \
     && apk add --no-cache openssh-client sshpass \
     && rm -rf /usr/local/lib/node_modules/npm \
-              /usr/local/lib/node_modules/corepack \
-              /opt/yarn-v* \
+        /usr/local/lib/node_modules/corepack \
+        /opt/yarn-v* \
     && rm -f /usr/local/bin/npm \
-             /usr/local/bin/npx \
-             /usr/local/bin/corepack \
-             /usr/local/bin/yarn \
-             /usr/local/bin/yarnpkg \
+        /usr/local/bin/npx \
+        /usr/local/bin/corepack \
+        /usr/local/bin/yarn \
+        /usr/local/bin/yarnpkg \
     && rm -rf /var/cache/apk/* /tmp/*
 
 WORKDIR /opt/proxpanel-bootstrap
