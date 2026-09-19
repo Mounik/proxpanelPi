@@ -1,6 +1,6 @@
 #!/bin/sh
 set -eu
-IMAGE="${DOCKERHUB_IMAGE:-itechlab/proxpanel}"
+IMAGE="${DOCKERHUB_IMAGE:-mounik/proxpanel}"
 VERSION="1.7.2-beta.4.1"
 
 docker buildx inspect proxpanel-builder >/dev/null 2>&1 || docker buildx create --name proxpanel-builder --use

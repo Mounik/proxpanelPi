@@ -1,5 +1,8 @@
 name: Release ProxPanel
 
+env:
+  PROXPANEL_DOCKER_IMAGE: ${{ vars.PROXPANEL_DOCKER_IMAGE || 'itechlab/proxpanel' }}
+
 on:
   workflow_dispatch:
     inputs:
@@ -235,11 +238,11 @@ jobs:
           channel="${{ steps.version.outputs.channel }}"
 
           tags=(
-            "-t" "itechlab/proxpanel:${version}"
-            "-t" "itechlab/proxpanel:${channel}"
+            "-t" "${PROXPANEL_DOCKER_IMAGE}:${version}"
+            "-t" "${PROXPANEL_DOCKER_IMAGE}:${channel}"
           )
           if [ "$channel" = "stable" ]; then
-            tags+=("-t" "itechlab/proxpanel:latest")
+            tags+=("-t" "${PROXPANEL_DOCKER_IMAGE}:latest")
           fi
 
           docker buildx build \

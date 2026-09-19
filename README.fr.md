@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://proxpanel.fr">Site officiel</a> ·
   <a href="README.md">English</a> ·
-  <a href="https://hub.docker.com/r/itechlab/proxpanel">Docker Hub</a> ·
+  <a href="https://hub.docker.com/r/mounik/proxpanel">Docker Hub</a> ·
   <a href="ROADMAP.md">Roadmap</a> ·
   <a href="HISTORY.md">Historique des versions</a>
 </p>
@@ -60,7 +60,7 @@ docker run -d \
   -p 8080:8080 \
   -v proxpanel_data:/app/data \
   -v proxpanel_runtime:/opt/proxpanel-runtime \
-  itechlab/proxpanel:beta
+  mounik/proxpanel:beta
 ```
 
 Puis ouvre :
@@ -142,7 +142,7 @@ L'historique public de la branche 1.7 est disponible dans [`HISTORY.md`](HISTORY
 
 Les notes historiques sont disponibles depuis **1.7.0-beta.1**. **v1.7.0-beta.14** est la première GitHub Release reproductible. La dernière prerelease publiée est **v1.7.2-beta.4.1**, avec ZIP complet, ZIP OTA, `release.json` et sommes SHA-256.
 
-Les images restent distribuées via [Docker Hub](https://hub.docker.com/r/itechlab/proxpanel), tandis que `updates.proxpanel.fr` reste responsable des canaux OTA, du rollout et des révocations.
+Les images restent distribuées via [Docker Hub](https://hub.docker.com/r/mounik/proxpanel), tandis que `updates.proxpanel.fr` reste responsable des canaux OTA, du rollout et des révocations.
 
 ## Roadmap 1.7.2
 

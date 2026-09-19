@@ -1,6 +1,6 @@
 services:
   proxpanel:
-    image: ${PROXPANEL_IMAGE:-itechlab/proxpanel:1.7.2-beta.4.1}
+    image: ${PROXPANEL_IMAGE:-mounik/proxpanel:1.7.2-beta.4.1}
     container_name: proxpanel
     restart: unless-stopped
     ports:

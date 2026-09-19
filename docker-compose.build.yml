@@ -4,4 +4,4 @@ services:
       context: .
       args:
         VERSION: 1.7.2-beta.4.1
-    image: itechlab/proxpanel:1.7.2-beta.4.1
+    image: mounik/proxpanel:1.7.2-beta.4.1

@@ -33,7 +33,7 @@ git init
 git branch -M main
 git add .
 git commit -m "Initial public release: ProxPanel 1.7.0-beta.15"
-git remote add origin https://github.com/ItechLabFr/proxpanel.git
+git remote add origin https://github.com/Mounik/proxpanelPi.git
 git push -u origin main
 ```
 
