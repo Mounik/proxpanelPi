@@ -390,12 +390,12 @@ async function readLmSensorsOverSsh(server,node,host) {
   if(!runtime.ssh)return {temperatureC:null,temperatureStatus:'unavailable',temperatureError:'Client OpenSSH absent de l’image ProxPanel.',temperatureSource:'lm-sensors',...temperatureDiagnostic(
     'ssh-client-missing','Client SSH absent',
     'La commande ssh n’est pas disponible dans le conteneur ProxPanel. La température ne peut pas être lue sur le nœud.',
-    'Mets à jour/recrée le conteneur avec l’image Docker complète ProxPanel 1.7.0-beta.14 ou plus récente.'
+    'Mets à jour/recrée le conteneur avec l’image Docker complète ProxPanel 1.7.2-beta.4.1 ou plus récente.'
   )};
   if(!runtime.sshpass)return {temperatureC:null,temperatureStatus:'unavailable',temperatureError:'sshpass absent de l’image ProxPanel.',temperatureSource:'lm-sensors',...temperatureDiagnostic(
     'sshpass-missing','Composant SSH incomplet',
     'Le client SSH est présent mais sshpass est absent du conteneur. ProxPanel ne peut pas utiliser le mot de passe PAM configuré.',
-    'Mets à jour/recrée le conteneur avec l’image Docker complète ProxPanel 1.7.0-beta.14 ou plus récente.'
+    'Mets à jour/recrée le conteneur avec l’image Docker complète ProxPanel 1.7.2-beta.4.1 ou plus récente.'
   )};
   if(!host)return {temperatureC:null,temperatureStatus:'unavailable',temperatureError:'Adresse du nœud introuvable dans Proxmox.',temperatureSource:'lm-sensors',...temperatureDiagnostic(
     'node-address-missing','Adresse du nœud introuvable',
@@ -421,7 +421,7 @@ async function readLmSensorsOverSsh(server,node,host) {
     const raw=String(e?.stderr||e?.message||e||'').trim();
     const msg=raw.split(/\r?\n/).filter(Boolean).slice(-2).join(' · ');
     let diag;
-    if(e?.code==='ENOENT')diag=temperatureDiagnostic('ssh-component-missing','Composant SSH absent','Le processus de collecte SSH ne peut pas être lancé dans le conteneur ProxPanel.','Mets à jour/recrée le conteneur avec l’image Docker complète ProxPanel 1.7.0-beta.14 ou plus récente.');
+    if(e?.code==='ENOENT')diag=temperatureDiagnostic('ssh-component-missing','Composant SSH absent','Le processus de collecte SSH ne peut pas être lancé dans le conteneur ProxPanel.','Mets à jour/recrée le conteneur avec l’image Docker complète ProxPanel 1.7.2-beta.4.1 ou plus récente.');
     else if(/permission denied|authentication failed|access denied/i.test(raw))diag=temperatureDiagnostic('ssh-auth-failed','Authentification SSH refusée',`Le nœud ${node||host} répond, mais refuse l’authentification du compte ${identity.user}@pam.`,'Vérifie le mot de passe enregistré dans ProxPanel et que ce compte PAM peut ouvrir une session SSH sur le nœud.');
     else if(/sensors:\s*(not found|command not found)|command not found.*sensors|sensors.*command not found|no such file or directory.*sensors/i.test(raw))diag=temperatureDiagnostic('lm-sensors-missing','lm-sensors absent du nœud',`La connexion SSH vers ${node||host} fonctionne, mais la commande « sensors » n’est pas disponible.`,'Installe le paquet lm-sensors sur ce nœud Proxmox puis exécute sensors-detect si nécessaire.');
     else if(/connection timed out|operation timed out|no route to host|network is unreachable|connection refused|could not resolve hostname|name or service not known|connection reset|connection closed/i.test(raw))diag=temperatureDiagnostic('node-unreachable','Nœud injoignable en SSH',`ProxPanel n’arrive pas à ouvrir une connexion SSH vers ${node||host} (${host}).`,'Vérifie que le nœud est joignable depuis le conteneur ProxPanel, que SSH écoute sur le port 22 et qu’aucun pare-feu ne bloque la connexion.');
